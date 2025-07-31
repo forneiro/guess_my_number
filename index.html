@@ -7,6 +7,26 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
+  <header>
+    <div class="container">
+      <div class="header_first_part">
+        <button class="btn">Again!</button>
+        <p>(Between 0 and 20)</p>
+      </div>
+      <h1>Guess My Number!</h1>
+      <div class="number">?</div>
+    </div>
+  </header>
+  <main class="container">
+    <section class="left">
+      <input type="number" class="guess" min="0" max="20"/>
+      <button class="btn">Check!</button>
+    </section>
+    <p id="message">Start guessing...</p>
+    <section class="right">
+      <p>Score: <span>17</span></p>
+      <p>Highscore: <span></span></p>
+    </section>
+  </main>
 </body>
 </html>
