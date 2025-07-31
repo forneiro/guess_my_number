@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+:root {
+    --color_principal: #eee;
+    --color_fondo: #222;
+    --fuente: "Press Start 2P", system-ui;
+    --bg_btn: #ccc;
+}
