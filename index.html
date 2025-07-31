@@ -10,8 +10,8 @@
   <header>
     <div class="container">
       <div class="header_first_part">
-        <button class="btn">Again!</button>
-        <p>(Between 0 and 20)</p>
+        <button class="btn" id="again">Again!</button>
+        <p>(Between 1 and 20)</p>
       </div>
       <h1>Guess My Number!</h1>
       <div class="number">?</div>
@@ -20,13 +20,15 @@
   <main class="container">
     <section class="left">
       <input type="number" class="guess" min="0" max="20"/>
-      <button class="btn">Check!</button>
+      <button class="btn" id="check">Check!</button>
     </section>
-    <p id="message">Start guessing...</p>
     <section class="right">
-      <p>Score: <span>17</span></p>
-      <p>Highscore: <span></span></p>
+      <p class="message">Start guessing...</p>
+      <p>💯 Score: <span id="score">17</span></p>
+      <p>💫 Highscore: <span id="highscore"></span></p>
     </section>
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
