@@ -3,34 +3,35 @@
 var number = document.querySelector(".number"); // Selecciona el signo '?'
 var secret_number = Math.ceil(Math.random() * 20); // Se elige un número secreto random
 var message = document.querySelector(".message"); // Se selecciona el mensaje
-var again = document.querySelector("#again"); // Selecciona el botón de reset
 var bg = document.querySelector("body"); // Selecciona el body del documento
-var guess = document.querySelector(".guess"); // Selecciona el input donde ponen el valor
 var score = document.querySelector("#score"); // Selecciona el score
-var highscore = document.querySelector("#highscore"); // Selecciona el máximo score
 var vidas = 17;
+var highscore = 0;
+var again = document.querySelector("#again"); // Selecciona el botón de reset
 var check = document.querySelector("#check"); // Selecciona el botón para checkear la respuesta
 
 check.addEventListener('click', function() { // Se le asigna el evento del click al botón check y la función principal
-    var user_value = Number(guess.value);
-    if (user_value == secret_number) {
+    var guess = Number(document.querySelector(".guess").value); // Selecciona el input donde ponen el valor
+    if (!guess) {
+        message.textContent = "Not number!";
+    } else if (guess == secret_number) {
         number.textContent = secret_number;
         message.textContent = "You got it!";
         bg.style.backgroundColor = "#31b808ff";
-        if (!highscore.textContent) {
-            highscore.textContent = vidas;
-        } else if (Number(score.textContent) > highscore.textContent) {
-            highscore.textContent = vidas;
+        if (vidas > highscore) {
+            highscore = vidas;
+            document.querySelector("#highscore").textContent = vidas;
         }
-    } else if (user_value > secret_number) {
-        vidas--;
-        score.textContent = vidas;
-        vidas <= 0 ? message.textContent = "You lose!": message.textContent = "Too high";
-    } else if (user_value < secret_number) {
-        vidas--;
-        score.textContent = vidas;
-        vidas <= 0 ? message.textContent = "You lose!": message.textContent = "Too low";
-    };
+    } else if (guess !== secret_number) {
+        if (vidas > 1) {
+            vidas--;
+            score.textContent = vidas;
+            message.textContent = guess > secret_number ? 'Too high!': 'Too low';
+        } else {
+            message.textContent = 'You lost!'
+            score.textContent = 0;
+        }
+    }
 });
 again.addEventListener('click', () => {
     message.textContent = "Start guessing...";
@@ -38,6 +39,6 @@ again.addEventListener('click', () => {
     score.textContent = vidas;
     number.textContent = "?";
     bg.style.backgroundColor = "var(--color_fondo)";
-    guess.value = '';
+    document.querySelector(".guess").value = '';
     secret_number = Math.ceil(Math.random() * 20);
 })
